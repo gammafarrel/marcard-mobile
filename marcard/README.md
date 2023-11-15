@@ -54,3 +54,47 @@
         6. Membuat sebuah class yang menerima atribur nama, icon, dan color (ShopItem)
 
         7. Membuat sebuah Class yang nantinya menggunakan data dari class lain (ShopItem) serta definisikan atribut dari tampilannya.
+
+2. Tugas 8
+
+    a. Perbedaan navigator
+        Terdapat perbedaan antara Navigator.push() dan Navigator.pushReplacement() dalam penggunaannya pada aplikasi Flutter.
+
+        1. Navigator.push() digunakan untuk menambahkan rute baru ke dalam tumpukan navigasi. Ketika pengguna menekan tombol kembali, rute sebelumnya akan ditampilkan kembali.
+
+        2. Navigator.pushReplacement() digunakan untuk mengganti rute teratas dalam tumpukan navigasi dengan rute baru. Ketika pengguna menekan tombol kembali, rute sebelumnya tidak akan ditampilkan kembali.
+
+    b. Layout widget
+        1. Container: Widget ini digunakan untuk mengatur tata letak dan dekorasi widget lain.
+        2. Column: Widget ini digunakan untuk mengatur widget secara vertikal.
+        3. Stack: Widget ini digunakan untuk menumpuk widget satu di atas yang lain.
+        4. Expanded: Widget ini digunakan untuk mengisi ruang kosong yang tersedia dalam widget Row, Column, atau Flex
+        5. ListView: Menyusun childrennya Dapat digunakan untuk menampilkan list daftar item seperti pada left drawer di tugas ini.
+        6. GridView: Menyusun childrennya dalam format matrix (grid). Dapatdigunakan untuk membuat tabel, menyusun card, dan lain sebagainya.
+        7. Wrap: Menyusun childrennya dalam format row dan column, jika spacenya tidak cukup widget akan berpindah ke row atau column berikutnya. Dapat digunakan untuk menyesuaikan ukuran setiap row/column, menghandle agar widget tidak overflow, dan lain sebagainya.
+    
+    c. Elemen input form pada tugas
+        1. TextFormField untuk Nama Produk serta validator untuk memastikan bahwa bidang tidak kosong, penting untuk memastikan bahwa setiap produk memiliki nama untuk identifikasi.
+        2. TextFormField untuk Harga beserta validator yang memeriksa tidak hanya kekosongan tetapi juga validitas angka, penting untuk data harga karena harus berupa angka.
+        3. TextFormField untuk Deskripsi serta validator untuk memastikan bahwa deskripsi tidak dibiarkan kosong.
+
+        Alasan penggunaan TextFormField adalah karena kemampuannya untuk disesuaikan dengan berbagai jenis data, memastikan bahwa setiap input sesuai dengan harapan (seperti teks singkat untuk nama, angka untuk harga, dan teks panjang untuk deskripsi). Selain itu, validator dapat diterapkan untuk memvalidasi data, mencegah entri yang tidak sah seperti produk tanpa nama atau harga yang bukan angka. Penggunaan TextFormField juga memberikan pengalaman pengguna yang intuitif dan mudah, karena pengguna sudah familiar dengan cara kerja input teks.
+
+    d. Clean architecture pada flutter
+        Penerapan clean architecture pada aplikasi Flutter melibatkan pembagian kode menjadi beberapa lapisan terpisah, masing-masing memiliki tanggung jawab tertentu:
+
+        1. Presentation Layer: Menangani UI dan interaksi pengguna, umumnya menggunakan widget dan logika UI Flutter.
+        2. Business Logic Layer (Domain Layer): Memuat logika bisnis aplikasi, termasuk entitas dan use case. Bersifat independen dari framework dan UI.
+        3. Data Layer: Bertanggung jawab atas manajemen data, termasuk repositori, model data, dan sumber data (API, database lokal).
+        4. Dependency Injection: Menggunakan teknik seperti provider atau get_it untuk mengurangi ketergantungan langsung antar komponen. Prinsip utama clean architecture adalah untuk memisahkan tanggung jawab, meningkatkan modularitas, dan memfasilitasi pengujian. Implementasi ini membantu mengelola dependensi, membuat kode lebih terstruktur, dan lebih mudah diuji.
+
+    e. Checklist
+        1. Membuat folder baru di lib yaitu screens dan widgets, bertujuan untuk implementasi clean architecture
+        2. Membuat file shoplist_form.dart sebagai halaman yang menirma input (terdapat TextFormField untuk nama, harga, dan deskripsi serta validasi yang dibutuhkan)
+        3. Mmebuat sebuah drawer yang dapat menghubungkan opsi menambah produk yang berada pada drawer dan halaman main ke shoplist_form.dart
+        4. Menguhubngkan 'tambah produk' pada halaman main ke ShopFormPage
+
+        Bonus
+        1. Membuat model Item.dart pada folder models
+        2. Membuat file see_product.dart, bertujuan untuk menampilkan product yang tersimpan
+        3. Pada drawer, buat tombol untuk melihat produk yang mengarahkan ke lihat produk
