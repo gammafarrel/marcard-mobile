@@ -108,7 +108,8 @@
             3. Efisiensi Pemrosesan
         Hal diatas menjadi pertimbangan dalam menggunakan model atau tidak
 
-    b. 
+    b. Dalam pengembangan aplikasi Flutter, peran CookieRequest sangat penting untuk mengelola cookies dalam fungsi-fungsi seperti manajemen sesi, pengguna, autentikasi, penyimpanan preferensi, dan pelacakan. Pentingnya berbagi instance ini di seluruh komponen aplikasi Flutter adalah agar semua komponen dapat menggunakan sesi yang sama untuk berkomunikasi. Hal ini tidak hanya bermanfaat untuk memastikan konsistensi data, tetapi juga untuk efisiensi sumber daya dan keamanan yang lebih baik. Pendekatan ini memudahkan pengembangan dan pemeliharaan aplikasi, sambil mendukung konsistensi cookie melintasi siklus hidup berbagai komponen. Dengan cara ini, debugging menjadi lebih mudah, dan kebijakan keamanan dapat dijaga secara konsisten sesuai dengan kebutuhan spesifik aplikasi dan arsitektur backend.\
+
     c. Pengambilan data JSON dilakukan sebagai berikut
         1. Mengambil data JSON, dari API, Lokal, maupun sumber lainnya
         2. Deserialisasi Data JSON, data JSON perlu diubah menjadi Dart terlebih dahulu
@@ -124,7 +125,14 @@
         5. Membuat autentikasi flutter yang menunggu data dari Django
         6. Jika data berhasil diambil, maka autentikasi pada flutter sukses
     
-    e. 
+    e. Widgets:
+        a. Scaffold: widget yang menyediakan kerangka dasar untuk aplikasi Material Design, termasuk komponen seperti AppBar, body, drawer, floating action button, dan bottom navigation bar. Scaffold digunakan untuk menyusun tata letak utama suatu halaman.
+        b. AppBar: sebuah bar di bagian atas layar yang umumnya menampilkan judul aplikasi dan tindakan-tindakan tertentu. Digunakan di dalam Scaffold untuk menempatkan tombol, judul, atau informasi status.
+        c. Text: widget untuk menampilkan teks di layar, dengan kemungkinan penyesuaian gaya teks seperti font, ukuran, warna, dan lainnya melalui properti style.
+        d. ListTile: digunakan untuk membuat item dalam daftar yang umumnya terdiri dari beberapa baris teks dan ikon opsional di awal atau akhir. Biasanya digunakan dalam ListView atau Drawer
+        e. Card: widget yang menerapkan kartu desain Material. Digunakan untuk menyajikan informasi terkait dalam bentuk terstruktur dan dapat memiliki efek ketinggian (elevation).f. Navigator: digunakan untuk mengelola stack rute atau navigasi dalam aplikasi, memungkinkan perpindahan antar halaman dengan operasi push dan pop.
+        g. TextStyle: sebuah kelas yang menentukan gaya teks, termasuk ukuran font, warna, jenis font, dan sebagainya. Digunakan pada widget Text untuk mengatur penampilan teks.h.h.h. SizedBox: widget dengan ukuran tetap, biasanya digunakan untuk memberikan jarak antar widget atau memberikan dimensi tertentu pada widget anaknya.
+        i. Padding adalah widget untuk memberikan padding (jarak dalam) pada widget anaknya, digunakan untuk memberikan ruang antara batas widget dan kontennya.
 
     f. Checklist
         1. Membuat app baru pada django dan menginstall keperluan authentication
@@ -145,5 +153,6 @@
         17. Logout ditambahkan pada shop_card.dart
 
         Bonus
+        1. Menambahkan halaman register dengan menghubungkannya dengan screen login dan juga Django
         
 
