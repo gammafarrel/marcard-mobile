@@ -1,6 +1,9 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:marcard/widgets/left_drawer.dart';
+import 'package:marcard/screens/menu.dart';
 import 'package:marcard/models/item.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 class ShopFormPage extends StatefulWidget {
   const ShopFormPage({super.key});
@@ -17,47 +20,9 @@ class _ShopFormPageState extends State<ShopFormPage> {
   int _price = 0;
   String _description = "";
 
-  void _saveItem() {
-    if (_formKey.currentState!.validate()) {
-      itemList.add(Item(
-        name: _name,
-        price: _price,
-        description: _description,
-      ));
-
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text('Produk berhasil tersimpan'),
-            content: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Nama: $_name'),
-                  Text('Harga: $_price'),
-                  Text('Deskripsi: $_description'),
-                ],
-              ),
-            ),
-            actions: [
-              TextButton(
-                child: const Text('OK'),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          );
-        },
-      );
-
-      _formKey.currentState!.reset();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Center(
@@ -164,5 +129,72 @@ class _ShopFormPageState extends State<ShopFormPage> {
         ),
       ),
     );
+  }
+
+  void _saveItem() {
+    final request = context.watch<CookieRequest>();
+    if (_formKey.currentState!.validate()) {
+      itemList.add(Item(
+        name: _name,
+        price: _price,
+        description: _description,
+      ));
+
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Produk berhasil tersimpan'),
+            content: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Nama: $_name'),
+                  Text('Harga: $_price'),
+                  Text('Deskripsi: $_description'),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                child: const Text('OK'),
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                      // Kirim ke Django dan tunggu respons
+                      // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
+                      final response = await request.postJson(
+                      "http://localhost:8000/create-flutter/",
+                      jsonEncode(<String, String>{
+                          'name': _name,
+                          'price': _price.toString(),
+                          'description': _description,
+                          // TODO: Sesuaikan field data sesuai dengan aplikasimu
+                      }));
+                      if (response['status'] == 'success') {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                          content: Text("Produk baru berhasil disimpan!"),
+                          ));
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => MyHomePage()),
+                          );
+                      } else {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                              content:
+                                  Text("Terdapat kesalahan, silakan coba lagi."),
+                          ));
+                      }
+                  }
+              },
+              ),
+            ],
+          );
+        },
+      );
+
+      _formKey.currentState!.reset();
+    }
   }
 }

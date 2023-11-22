@@ -55,7 +55,7 @@
 
         7. Membuat sebuah Class yang nantinya menggunakan data dari class lain (ShopItem) serta definisikan atribut dari tampilannya.
 
-2. Tugas 8
+2. TUGAS 8
 
     a. Perbedaan navigator
         Terdapat perbedaan antara Navigator.push() dan Navigator.pushReplacement() dalam penggunaannya pada aplikasi Flutter.
@@ -98,3 +98,52 @@
         1. Membuat model Item.dart pada folder models
         2. Membuat file see_product.dart, bertujuan untuk menampilkan product yang tersimpan
         3. Pada drawer, buat tombol untuk melihat produk yang mengarahkan ke lihat produk
+
+3. TUGAS 9
+    a. Ya, Pengambilan data JSON tidak selalu memerlukan pembuatan model terlebih dahulu. JSON (JavaScript Object Notation) adalah format data yang ringan dan mudah dibaca oleh manusia. Jadi jika data JSON yang dimiliki sudah terstruktur dengan baik dan hanya perlu mengakses nilai-nilai spesifik dalam data tersebut.
+
+        Ada beberapa hal yang perlu diperhatikan juga yaitu, 
+            1. Kompleksitas Data
+            2. Kebutuhan Analisis atau Prediksi
+            3. Efisiensi Pemrosesan
+        Hal diatas menjadi pertimbangan dalam menggunakan model atau tidak
+
+    b. 
+    c. Pengambilan data JSON dilakukan sebagai berikut
+        1. Mengambil data JSON, dari API, Lokal, maupun sumber lainnya
+        2. Deserialisasi Data JSON, data JSON perlu diubah menjadi Dart terlebih dahulu
+        3. Membuat model Dart dari struktur data JSON
+        4. Memproses data yang diambil dari JSON menggunakan model Dart
+        5. Menampilkan data pada Flutter menggunakan widget
+    
+    d. Proses autentikasi antara aplikasi Flutter dan server Django melibatkan beberapa langkah yaitu:
+        1. Membuat views untuk login pada django pada app authentication
+        2. Membuat urls nya pula
+        3. Membuat form login pada flutter
+        4. Ketika login, url akan melempar ke autentikasi Django
+        5. Membuat autentikasi flutter yang menunggu data dari Django
+        6. Jika data berhasil diambil, maka autentikasi pada flutter sukses
+    
+    e. 
+
+    f. Checklist
+        1. Membuat app baru pada django dan menginstall keperluan authentication
+        2. App baru "authentication" diisi dengan views.py untuk login dan logout
+        4. Masukkan pula urlsnya
+        5. Install package yang diperlukan pada flutter
+        6. Tambahkan CookieRequest pada child widgets
+        7. Membuat berkas baru bernama login.dart pada screens
+        8. Membuka endpoint JSON dari tugas Django sebelumna lalu melakukan perubahan dari JSON menjadi Dart lewat Quicktype
+        9. Untuk melakukan fetch data dari Django, buat berkas bernama list_product.dart
+        10. Tambahkan list_product.dart sebagai impor pada left drawer
+        11. Integrasikan form pada flutter dengan django
+        12. Membuat views tambahan yaitu creat_product_flutter pada main/views.py di Django
+        13. Tambahkan pula URLS nya
+        14. Pada flutter, hubungkan sholist_form.dart dengan CookieRequest
+        15. Ubah perintah onPressed: () menjadi asynchronus
+        16. Implementasikan fitur Logout
+        17. Logout ditambahkan pada shop_card.dart
+
+        Bonus
+        
+
